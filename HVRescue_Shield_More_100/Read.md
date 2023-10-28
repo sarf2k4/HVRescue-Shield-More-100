@@ -1,11 +1,18 @@
 
 /*
+
  Title:        HVRescue_Shield_More  (renamed from HVRescue_Shield_Plus)
+
  Description:  Arduino sketch for use with the HV Rescue Shield
+
  Based on:     HVRescue_Shield_Plus by Dennis Tricker
+
  Author:       Originally Jeff Keyzer, Modified and extended by Dennis Tricker and More version by Peter Boxler (Sept. 2016)
+
  Company:      MightyOhm Engineering
+
  Website:      http://mightyohm.com
+
  Contact:      http://mightyohm.com/blog/contact/
 
  This sketch assumes that the Arduino is equipped with an AVR HV Rescue Shield.
@@ -27,38 +34,38 @@
 Changelog:
 **********
 16/15/09  More 1.00 (based on Plus version) by Peter Boxler, Switzerland
-					Tested with HVRescue Shield 2 on an Ardunio UNO R3 with Arduino IDE 1.6.9 (Mac) <---
-					Added table (array) of AVR device definitions (incomplete, can easily be extended) and added more functions.
-					Manual selection of device type removed, sketch tries to establish device type:
-						finds either:
-						invalid AVR signature found (not 0x1E) eg. no device present
-						valid AVR signature found but no match to internal table
-						valid AVR signature found and matches entry in internal table
-					Added print AVR device type (after reading signature)
-					Loop function streamlined for better readability
-					Programming mode (HVSP/HVPP) is taken from internal device table
-					Additionl selections in function menu:
-          	Function D write default fuses according to device found
-          	Function H write fuses for internal 8 Mhz clock (no division by 8)
-          	Function Q write fuses for external crystal 16 Mhz
-					Note: these functions are available only if device was recognized based on the signature.
-          removed non-interactive feature
+					- Tested with HVRescue Shield 2 on an Ardunio UNO R3 with Arduino IDE 1.6.9 (Mac) <---
+					- Added table (array) of AVR device definitions (incomplete, can easily be extended) and added more functions.
+					- Manual selection of device type removed, sketch tries to establish device type:
+						- finds either:
+						- invalid AVR signature found (not 0x1E) eg. no device present
+						- valid AVR signature found but no match to internal table
+						- valid AVR signature found and matches entry in internal table
+					- Added print AVR device type (after reading signature)
+					- Loop function streamlined for better readability
+					- Programming mode (HVSP/HVPP) is taken from internal device table
+					- Additionl selections in function menu:
+          	- Function D write default fuses according to device found
+          	- Function H write fuses for internal 8 Mhz clock (no division by 8)
+          	- Function Q write fuses for external crystal 16 Mhz
+					- Note: these functions are available only if device was recognized based on the signature.
+          - removed non-interactive feature
 
 
  12/1/11 Plus 1.00 Rewritten to simplify device access and extend functionality, by Dennis J Tricker
-             Added unified HVPP & SP low level code: target_xxxxxx functions & associated support routines (Load & Strobe)
-             Introduced choice menu function and get_value with error checking and automation
-             Fuse write now checked and indicated with OK or Error
-             Extended chip data output to include SIG and LOCK bits
-             Extended commands to allow Erase, FLASH & EEPROM Read
-             Added FLASH & EEPROM test page write: writes and checks pattern to ensure chip operational
-                 Note: Address must be a start of page address ! See datasheet
+             - Added unified HVPP & SP low level code: target_xxxxxx functions & associated support routines (Load & Strobe)
+             - Introduced choice menu function and get_value with error checking and automation
+             - Fuse write now checked and indicated with OK or Error
+             - Extended chip data output to include SIG and LOCK bits
+             - Extended commands to allow Erase, FLASH & EEPROM Read
+             - Added FLASH & EEPROM test page write: writes and checks pattern to ensure chip operational
+                 - Note: Address must be a start of page address ! See datasheet
                  EEPROM test writes four bytes 0xaa,0x55,0xa5,0x5a
                  FLASH Test writes "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPp" = 32 bytes= 16 words. Upper case is MSB.
                  EEPROM&FLASH Test may not write a whole page due to limits on Arduino RAM memory, only check bytes written
-             All output in hex, all input in hex: 0x prefix optional
-             IMPORTANT: The Erase and Test functions will clear / overwrite existing device data - You have been warned !
-             Tested with Arduino 22 & 1.0, ATtiny85/ATtiny2313/ATmega48
+             - All output in hex, all input in hex: 0x prefix optional
+             - IMPORTANT: The Erase and Test functions will clear / overwrite existing device data - You have been warned !
+             - Tested with Arduino 22 & 1.0, ATtiny85/ATtiny2313/ATmega48
 
  3/15/11 2.12
  - New digital pin 0-7 (command&data) read/write routines for the Arduino Mega, since these lines are implemented

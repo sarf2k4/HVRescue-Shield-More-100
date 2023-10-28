@@ -60,9 +60,9 @@ Changelog:
 - Extended commands to allow Erase, FLASH & EEPROM Read
 - Added FLASH & EEPROM test page write: writes and checks pattern to ensure chip operational
 - Note: Address must be a start of page address ! See datasheet
-EEPROM test writes four bytes 0xaa,0x55,0xa5,0x5a
-FLASH Test writes "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPp" = 32 bytes= 16 words. Upper case is MSB.
-EEPROM&FLASH Test may not write a whole page due to limits on Arduino RAM memory, only check bytes written
+- EEPROM test writes four bytes 0xaa,0x55,0xa5,0x5a
+- FLASH Test writes "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPp" = 32 bytes= 16 words. Upper case is MSB.
+- EEPROM&FLASH Test may not write a whole page due to limits on Arduino RAM memory, only check bytes written
 - All output in hex, all input in hex: 0x prefix optional
 - IMPORTANT: The Erase and Test functions will clear / overwrite existing device data - You have been warned !
 - Tested with Arduino 22 & 1.0, ATtiny85/ATtiny2313/ATmega48
